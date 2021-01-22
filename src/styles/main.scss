@@ -1,5 +1,5 @@
-@import "_variables";
-@import "_animations";
+@import "variables";
+@import "mixins";
 
 body {
   margin: 0;
@@ -7,20 +7,19 @@ body {
 }
 
 .calendar {
-  display: flex;
-  flex-wrap: wrap;
-  width: 722px;
-  margin: 40px auto;
+  @include flexRules;
+  width: $containerWidth;
+  margin: $containerMargin;
 }
 
 @each $val, $num in $days {
   @for $i from 1 through $num {
     .calendar-#{$num} div:nth-child(#{$i}) {
-      display: flex;
+      @include flexRules;
       justify-content: center;
-      width: 100px;
-      height: 100px;
-      margin: 0.5px;
+      width: $boxWidth;
+      height: $boxHeight;
+      margin: $boxMargin;
   
       background-color: #eee;
       border: 1px solid #000;
@@ -35,7 +34,7 @@ body {
   
       &::after {
         content: "#{$i}";
-        display: flex;
+        @include flexRules;
         justify-content: center;
         align-items: center;
   
